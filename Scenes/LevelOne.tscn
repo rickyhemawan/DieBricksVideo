@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Textures/paddle.png" type="Texture" id=1]
+[ext_resource path="res://Mini Scenes/Brick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Paddle.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 4 )
+
+[node name="World" type="Node2D"]
+
+[node name="Paddle" type="KinematicBody2D" parent="."]
+position = Vector2( 320, 320 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Paddle"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Anchor" type="Position2D" parent="Paddle"]
+position = Vector2( 0, 32 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 384, 704, 384, 704, -64, -64, -64, -64, 384, 0, 384 )
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Brick" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 320, 80 )
+
+[node name="Brick8" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 448, 80 )
+
+[node name="Brick2" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 384, 112 )
+
+[node name="Brick3" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 320, 112 )
+
+[node name="Brick4" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 256, 112 )
+
+[node name="Brick5" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 192, 80 )
+
+[node name="Brick6" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 384, 80 )
+
+[node name="Brick7" parent="Bricks" instance=ExtResource( 2 )]
+position = Vector2( 256, 80 )
